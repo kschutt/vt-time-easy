@@ -31,7 +31,7 @@
     <th>Course number</th>
     <th>Term</th>
   </tr>
-          <% Vtclass.last(10).each do |vtclass| %>
+          <% Vtclass.last(10).reverse.each do |vtclass| %>
             <tr>
     <td align="left"><%= vtclass.campus_name %></td>
     <td><%= vtclass.subject_code %></td>
