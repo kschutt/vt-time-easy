@@ -31,6 +31,12 @@
     <%= f.label "Add Blacksburg" %> (this doesn't do anything if you selected the Blacksburg campus above)<br />
     <%= check_box_tag 'add_bburg', 'true', true %>
   </div>
+  <% if current_user.admin %>
+  <div class="field">
+    <%= f.label "Program" %><br />
+    <%= f.select :program_id, Program.all.collect {|x| [x.name, x.id]} %>
+  </div>
+  <% end %>
   <div class="actions">
     <%= f.submit "Add Class", class: "btn btn-info" %>
   </div>

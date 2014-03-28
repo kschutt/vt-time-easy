@@ -1,4 +1,5 @@
 class VtClassDetailsController < ApplicationController
+  # authorize_resource
   def index
   	@classdetails = VtClassDetails.order(:campus,:subject_code)
   end

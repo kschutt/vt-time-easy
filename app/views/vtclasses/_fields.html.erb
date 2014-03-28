@@ -1,0 +1,20 @@
+<tr><td>
+    <%= f.label :subject_code %></td><td>
+    <%= f.select :subject_code, Subject.all.collect {|x| [x.name, x.subject_code]} %>
+  </td>
+<tr><td>
+    <%= f.label :course_number %> (you can add multiple courses by separating the course numbers with commas. E.g., 5601,5401,..)</td><td>
+    <%= f.number_field :course_number %>
+  </td>
+<tr><td>
+    <%= f.label "Term Year" %></td><td>
+    <%= f.select :termyear, Term.all.collect {|x| [x.name, x.vtid]} %>
+  </td>
+<tr><td>
+    <%= f.label "Campus" %></td><td>
+    <%= f.select :campus, Campu.all.collect {|x| [x.name, x.vtid]} %>
+  </td>
+<tr>
+    <td><%= f.check_box :_destroy %> <%= f.label :_destroy, "Remove Class" %></td>
+    <td></td>
+</tr>

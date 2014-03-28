@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+<% if can? :manage, @program %>
+<div class="pull-right">
+	<div class="btn-group">
+	<%= link_to "Edit", edit_program_path(@program), class: "btn btn-info" %>
+</div>
+	</div>
+	<% end %>
+<h2><%= @program.name %></h2>
+
+<%= render 'vtclasses/class_details' %>

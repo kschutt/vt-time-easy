@@ -1,4 +1,6 @@
 class VtclassesController < ApplicationController
+  load_and_authorize_resource
+  include ApplicationHelper
   # GET /vtclasses
   # GET /vtclasses.json
   def index
@@ -39,34 +41,11 @@ class VtclassesController < ApplicationController
     @vtclass = Vtclass.find(params[:id])
   end
 
-  def add_new_class(params)
-
-    @vtclass = Vtclass.new(params[:vtclass])
-    @vtclass.user = current_user if current_user
-    if @vtclass.campus != 0 and params[:add_bburg] == 'true' # always adding blacksburg for now
-    @vtclass_bburg = @vtclass.dup
-    @vtclass_bburg.campus = 0
-    @vtclass_bburg.save!
-    end
-    @vtclass
-  end
   # POST /vtclasses
   # POST /vtclasses.json
   def create
-    if params[:vtclass][:course_number].include? ","
-      course_numbers = params[:vtclass][:course_number].split(',')
-      course_numbers.each do |cn|
-        cn = Integer(cn) rescue nil
-        if cn
-        new_params = params.dup
-        new_params[:vtclass][:course_number] = cn
-        @vtclass = add_new_class(new_params)
-        @vtclass.save!
-      end
-      end
-    else
-      @vtclass = add_new_class(params)
-  end
+
+    @vtclass = check_for_multiple_classes(params)
 
     respond_to do |format|
       if @vtclass.save
@@ -102,7 +81,7 @@ class VtclassesController < ApplicationController
     @vtclass.destroy
 
     respond_to do |format|
-      format.html { redirect_to vtclasses_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

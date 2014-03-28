@@ -37,7 +37,7 @@
       <% else %>
       <td></td>
       <% end %>
-    <td><%= link_to '', edit_vtclass_path(vtclass), class: "glyphicon glyphicon-pencil" %><%= link_to '', vtclass, method: :delete, data: { confirm: 'Are you sure you want to remove this class?' } , class: "glyphicon glyphicon-remove" %></td>
+    <td><%= link_to '', edit_vtclass_path(vtclass), class: "glyphicon glyphicon-pencil" if can? :manage, vtclass %><%= link_to '', vtclass, method: :delete, data: { confirm: 'Are you sure you want to remove this class?' } , class: "glyphicon glyphicon-remove" if can? :manage, vtclass %></td>
   </tr>
 <% end %>
 </table>

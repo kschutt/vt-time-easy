@@ -1,4 +1,5 @@
 class TermsController < ApplicationController
+  load_and_authorize_resource
   # GET /terms
   # GET /terms.json
   def index

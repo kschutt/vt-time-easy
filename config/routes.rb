@@ -1,4 +1,6 @@
 VtCsClassList::Application.routes.draw do  
+  resources :programs
+
   devise_for :users
 
   get "vt_class_details/index"
