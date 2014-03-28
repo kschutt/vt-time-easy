@@ -1,6 +1,8 @@
 <div class="container">
+  <div class="row">
+  </div>
 	<div class="row">
-		<div class="col-md-offset-3 col-md-6 content-span center">
+		<div class="col-md-6 content-span center">
 <h2>Sign in</h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -19,5 +21,25 @@
 
 <%= render "devise/shared/links" %>
 </div>
+
+    <div class="col-md-6 content-span center">
+       <h2>Recent Classes Added by Students</h2>
+<table class="table table-condensed table-hover table-bordered">
+    <tr>
+    <th>Campus</th>
+    <th>Subject code</th>
+    <th>Course number</th>
+    <th>Term</th>
+  </tr>
+          <% Vtclass.last(10).each do |vtclass| %>
+            <tr>
+    <td align="left"><%= vtclass.campus_name %></td>
+    <td><%= vtclass.subject_code %></td>
+    <td><%= vtclass.course_number %></td>
+    <td><%= vtclass.term_name %></td>
+            </tr>
+          <%end%>
+       </table>
+    </div>
 </div>
 </div>
