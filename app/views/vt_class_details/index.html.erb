@@ -1,0 +1,21 @@
+<h1>Known class schedules</h1>
+<p>
+	This will continue to be built as people search for classes in new subject codes, terms, or campuses.
+</p>
+
+<table class="table table-condensed table-hover table-bordered">
+  <tr>
+    <th>Campus</th>
+    <th>Subject code</th>
+    <th>Term</th>
+  </tr>
+
+<% @classdetails.each do |vtclass| %>
+  <tr>
+
+    <td><%= vtclass.campus_name %></td>
+    <td><%= vtclass.subject_code %></td>
+    <td><%= vtclass.term_name %></td>
+  </tr>
+  <% end %>
+</table>

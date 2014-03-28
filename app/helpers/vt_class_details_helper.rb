@@ -1,0 +1,2 @@
+module VtClassDetailsHelper
+end

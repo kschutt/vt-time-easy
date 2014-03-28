@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  subject_code: MyString
+  term: 1
+  classes: MyText
+
+two:
+  subject_code: MyString
+  term: 1
+  classes: MyText

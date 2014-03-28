@@ -1,0 +1,37 @@
+<%= form_for(@vtclass) do |f| %>
+  <% if @vtclass.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vtclass.errors.count, "error") %> prohibited this vtclass from being saved:</h2>
+
+      <ul>
+      <% @vtclass.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :subject_code %><br />
+    <%= f.select :subject_code, Subject.all.collect {|x| [x.name, x.subject_code]} %>
+  </div>
+  <div class="field">
+    <%= f.label :course_number %> (you can add multiple courses by separating the course numbers with commas. E.g., 5601,5401,..)<br />
+    <%= f.number_field :course_number %>
+  </div>
+  <div class="field">
+    <%= f.label "Term Year" %><br />
+    <%= f.select :termyear, Term.all.collect {|x| [x.name, x.vtid]} %>
+  </div>
+  <div class="field">
+    <%= f.label "Campus" %><br />
+    <%= f.select :campus, Campu.all.collect {|x| [x.name, x.vtid]} %>
+  </div>
+  <div class="field">
+    <%= f.label "Add Blacksburg" %> (this doesn't do anything if you selected the Blacksburg campus above)<br />
+    <%= check_box_tag 'add_bburg', 'true', true %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add Class", class: "btn btn-info" %>
+  </div>
+<% end %>

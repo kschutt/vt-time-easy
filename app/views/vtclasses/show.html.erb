@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Subject code:</b>
+  <%= @vtclass.subject_code %>
+</p>
+
+<p>
+  <b>Course number:</b>
+  <%= @vtclass.course_number %>
+</p>
+
+
+<%= link_to 'Edit', edit_vtclass_path(@vtclass) %> |
+<%= link_to 'Back', vtclasses_path %>

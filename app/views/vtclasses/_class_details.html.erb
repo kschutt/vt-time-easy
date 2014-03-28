@@ -1,0 +1,43 @@
+
+<table class="table table-condensed table-hover table-bordered">
+  <tr>
+    <th>Campus</th>
+    <th>Subject code</th>
+    <th>Course number</th>
+    <th>Term</th>
+    <th>Title</th>
+    <th>Sections</th>
+    <th></th>
+  </tr>
+
+<% @vtclasses.each do |vtclass| 
+  classdetails = VtClassDetails.get_details(vtclass)
+  %>
+  <tr>
+    <td><%= vtclass.campus_name %></td>
+    <td><%= vtclass.subject_code %></td>
+    <td><%= vtclass.course_number %></td>
+    <td><%= vtclass.term_name %></td>
+    <td><%= !classdetails.blank? ? classdetails[0][2] : "No class this term at this campus" %></td>
+    <%  if classdetails %>
+        <td> 
+          <table class="table table-condensed table-hover table-bordered">
+      <% classdetails.each do |cd| %>
+            <tr>
+          <td><%= cd[0] %></td>
+          <td><%= cd[3] %></td>
+          <td><%= cd[4] %></td>
+          <td><%= cd[5] %></td>
+          <td><%= cd[6] %></td>
+          <td><%= cd[7] %></td>
+        </tr>
+      <% end %>
+        </table>
+        </td>
+      <% else %>
+      <td></td>
+      <% end %>
+    <td><%= link_to '', edit_vtclass_path(vtclass), class: "glyphicon glyphicon-pencil" %><%= link_to '', vtclass, method: :delete, data: { confirm: 'Are you sure you want to remove this class?' } , class: "glyphicon glyphicon-remove" %></td>
+  </tr>
+<% end %>
+</table>

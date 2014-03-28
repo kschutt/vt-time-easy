@@ -1,0 +1,22 @@
+<h1>User details</h1>
+
+<table class="table table-condensed table-hover table-bordered">
+  <tr>
+    <th>Email</th>
+    <th>Created at</th>
+    <th>Last signed on</th>
+    <th>Last IP</th>
+    <th>Number of classes</th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+
+    <td><%= user.email %></td>
+    <td><%= user.created_at %></td>
+    <td><%= user.last_sign_in_at %></td>
+    <td><%= user.last_sign_in_ip %></td>
+    <td><%= link_to user.vtclasses.count, vt_class_details_show_user_path(id: user) %></td>
+  </tr>
+  <% end %>
+</table>
