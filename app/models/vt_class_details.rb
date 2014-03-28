@@ -5,7 +5,6 @@ class VtClassDetails < ActiveRecord::Base
   	classdetails = VtClassDetails.find_by_subject_code_and_term_and_campus(vtclass.subject_code,vtclass.termyear,vtclass.campus)
 
   	if classdetails.blank?
-      raise vtclass.to_yaml
 		fetcher = VtclassFetch.new
     	classdetails = fetcher.fetch_classes(vtclass.subject_code,vtclass.termyear,vtclass.campus)
     end
