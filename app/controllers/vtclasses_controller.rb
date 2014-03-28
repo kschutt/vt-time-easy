@@ -44,7 +44,7 @@ class VtclassesController < ApplicationController
     @vtclass = Vtclass.new(params[:vtclass])
     @vtclass.user = current_user if current_user
     if @vtclass.campus != 0 and params[:add_bburg] == 'true' # always adding blacksburg for now
-    @vtclass_bburg = Vtclass.new(params[:vtclass])
+    @vtclass_bburg = @vtclass.dup
     @vtclass_bburg.campus = 0
     @vtclass_bburg.save!
     end
@@ -59,7 +59,7 @@ class VtclassesController < ApplicationController
         cn = Integer(cn) rescue nil
         if cn
         new_params = params.dup
-        new_params[:vtclass][:course_number] = cn.strip
+        new_params[:vtclass][:course_number] = cn
         @vtclass = add_new_class(new_params)
         @vtclass.save!
       end
