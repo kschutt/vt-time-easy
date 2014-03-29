@@ -6,6 +6,7 @@ VtCsClassList::Application.routes.draw do
   get "vt_class_details/index"
   get "vt_class_details/users"
   get "vt_class_details/show_user", to: "vt_class_details#show_user"
+  get "vt_class_details/show"
 
   resources :terms
 

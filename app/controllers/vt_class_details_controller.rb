@@ -19,4 +19,7 @@ class VtClassDetailsController < ApplicationController
   		@vtclasses = @user.vtclasses
 
   end
+  def show
+    @vt_class_details = VtClassDetails.find(params[:id])
+  end
 end

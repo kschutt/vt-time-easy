@@ -34,7 +34,7 @@
   <% if current_user.admin %>
   <div class="field">
     <%= f.label "Program" %><br />
-    <%= f.select :program_id, Program.all.collect {|x| [x.name, x.id]} %>
+    <%= f.select :program_id, Program.all.collect {|x| [x.name, x.id]},{prompt: true} %>
   </div>
   <% end %>
   <div class="actions">

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= "%s - %s - %s" % [@vt_class_details.campus_name,@vt_class_details.subject_code,@vt_class_details.term_name] %></h2>
+
+<table class="table table-condensed table-hover table-bordered">
+  <tr>
+    <th>CRN</th>
+    <th>Course Number</th>
+    <th>Title</th>
+    <th>Days</th>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Location</th>
+    <th>Instructor</th>
+  </tr>
+<% JSON.parse(@vt_class_details.classes).each do |classInfo| %>
+<tr>
+<td><%= classInfo[0] %></td>
+<td><%= classInfo[1] %></td>
+<td><%= classInfo[2] %></td>
+<td><%= classInfo[3] %></td>
+<td><%= classInfo[4] %></td>
+<td><%= classInfo[5] %></td>
+<td><%= classInfo[6] %></td>
+<td><%= classInfo[7] %></td>
+</tr>
+<% end %>
+
+  </table>

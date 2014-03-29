@@ -23,6 +23,9 @@ class VtClassDetails < ActiveRecord::Base
   end
 
   def term_name
-  	Term.find_by_vtid(self.term).name if Term.find_by_vtid(self.term)
+    Term.find_by_vtid(self.term).name if Term.find_by_vtid(self.term)
+  end 
+   def subject_code_name
+    Subject.find_by_subject_code(self.subject_code).name if  Subject.find_by_subject_code(self.subject_code)
   end
 end

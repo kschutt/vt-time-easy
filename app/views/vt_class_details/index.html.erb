@@ -8,14 +8,16 @@
     <th>Campus</th>
     <th>Subject code</th>
     <th>Term</th>
+    <th></th>
   </tr>
 
 <% @classdetails.each do |vtclass| %>
   <tr>
 
     <td><%= vtclass.campus_name %></td>
-    <td><%= vtclass.subject_code %></td>
+    <td><%= vtclass.subject_code_name %></td>
     <td><%= vtclass.term_name %></td>
+    <td><%= link_to "", vt_class_details_show_path(id: vtclass), class: "glyphicon glyphicon-th" %></td>
   </tr>
   <% end %>
 </table>
