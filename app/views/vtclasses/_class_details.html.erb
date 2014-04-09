@@ -15,7 +15,7 @@ classdetails = VtClassDetails.get_details(vtclass)
   %>
   <tr>
     <td><%= vtclass.campus_name %></td>
-    <td><%= vtclass.subject_code %></td>
+    <td><%= vtclass.subject_code_name %></td>
     <td><%= vtclass.course_number %></td>
     <td><%= vtclass.term_name %></td>
     <td><%= !classdetails.blank? ? classdetails[0][2] : "No class this term at this campus" %></td>

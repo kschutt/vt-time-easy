@@ -31,4 +31,8 @@ end
   def term_name
   	Term.find_by_vtid(self.termyear).name if Term.find_by_vtid(self.termyear)
   end
+
+  def subject_code_name
+    Subject.find_by_subject_code(self.subject_code).name if  Subject.find_by_subject_code(self.subject_code)
+  end
 end
