@@ -20,6 +20,10 @@ class Vtclass < ActiveRecord::Base
     
   end
 
+def class_details
+  classdetails = VtClassDetails.get_details(self)
+  classdetails.blank? ? 1 : 0
+end
   def campus_name
   	Campu.find_by_vtid(self.campus).name if Campu.find_by_vtid(self.campus)
   end
