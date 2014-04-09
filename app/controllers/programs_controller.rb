@@ -16,7 +16,7 @@ class ProgramsController < ApplicationController
   def show
     @program = Program.find(params[:id])
     @vtclasses = @program.vtclasses.order(:campus, :subject_code, :course_number)
-    @vtclasses.sort! { |a,b| a.class_details <=> b.class_details}
+    # @vtclasses.sort! { |a,b| a.class_details <=> b.class_details}
 
     respond_to do |format|
       format.html # show.html.erb
