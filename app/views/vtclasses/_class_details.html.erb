@@ -11,7 +11,7 @@
   </tr>
 
 <% @vtclasses.each do |vtclass| 
-  classdetails = VtClassDetails.get_details(vtclass)
+classdetails = VtClassDetails.get_details(vtclass)
   %>
   <tr>
     <td><%= vtclass.campus_name %></td>
